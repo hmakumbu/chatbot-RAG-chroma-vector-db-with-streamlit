@@ -1,10 +1,10 @@
 import streamlit as st
-from chatbot_databeez.ai_model import llm
+from chatbot_rag_chroma.ai_model import llm
 from langchain.schema.output_parser import StrOutputParser
 from langchain.schema.runnable import RunnablePassthrough
 import os
 from dotenv import load_dotenv
-from chatbot_databeez.prompt import QUERY_PROMPT
+from chatbot_rag_chroma.prompt import QUERY_PROMPT
 from get_llm_features import get_retriever, get_chain
 
 load_dotenv()

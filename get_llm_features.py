@@ -1,13 +1,13 @@
 import streamlit as st
-from chatbot_databeez.vectordb import create_vector_db
-from chatbot_databeez.ai_model import llm
+from chatbot_rag_chroma.vectordb import create_vector_db
+from chatbot_rag_chroma.ai_model import llm
 #from langchain.prompts import PromptTemplate
 from langchain.schema.output_parser import StrOutputParser
 from langchain.schema.runnable import RunnablePassthrough
-from chatbot_databeez.load import load_pdf
-from chatbot_databeez.preprocess import process_document
+from chatbot_rag_chroma.load import load_pdf
+from chatbot_rag_chroma.preprocess import process_document
 import os
-from chatbot_databeez.prompt import QUERY_PROMPT
+from chatbot_rag_chroma.prompt import QUERY_PROMPT
 
 # Initialize the Chroma vector database
 DATA_PATH = os.getenv("DATAPATH")

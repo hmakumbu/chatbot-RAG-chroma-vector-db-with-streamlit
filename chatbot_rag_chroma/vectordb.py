@@ -2,7 +2,7 @@ import os
 import chromadb
 from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain_community.vectorstores import Chroma
-from chatbot_databeez.preprocess import process_document
+from chatbot_rag_chroma.preprocess import process_document
 from dotenv import load_dotenv
 from langchain.schema import Document
 
