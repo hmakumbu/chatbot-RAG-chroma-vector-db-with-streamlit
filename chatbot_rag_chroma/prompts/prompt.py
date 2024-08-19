@@ -2,14 +2,6 @@
 from langchain.prompts import PromptTemplate
 
 
-# QUERY_PROMPT = PromptTemplate.from_template(
-#     """
-#     You are a helpful expert financial research assistant. Your users are asking questions about information contained in an annual report.
-#     You will be shown the user's question, and the relevant information from the annual report. Answer the user's question using only this information.
-#     Here is the question: {question}. \n Here is the Information you have to use as context: {context}
-#     """
-# )
-
 QUERY_PROMPT = PromptTemplate.from_template(
     """
     Vous êtes un assistant de recherche expert et utile, spécialisé dans les formations en ligne dans le domaine des données. 
