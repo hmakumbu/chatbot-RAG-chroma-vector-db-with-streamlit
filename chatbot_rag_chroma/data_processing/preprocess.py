@@ -1,15 +1,16 @@
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+import json
 from langchain.schema import Document
 
-def process_document(data : list[str]) -> list[Document]:
+def process_document(data):
+    texts = []
+    for document in data:
+        paragraphs = document.get("paragraphs", [])
+        headers = [header.get("text") for header in document.get("headers", [])]
+        texts.extend(paragraphs + headers)
+    texts = [text for text in texts if text.strip()]
+    return [Document(page_content=text) for text in texts]
 
-   # data = load_pdf()
-    # Convert the text data into a list of Document objects
-    documents = [Document(page_content=doc.strip()) for doc in data if doc.strip()]
-    
-    # Initialize text splitter
-    text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n", ". ", " ", ""], chunk_size=1000, chunk_overlap=0)
-    
-    # Split documents into chunks
-    chunks = text_splitter.split_documents(documents)
-    return chunks
+with open("website_structure.json", "r") as f:
+    data = json.load(f)
+
+processed_documents = process_document(data)

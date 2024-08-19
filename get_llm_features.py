@@ -1,13 +1,13 @@
 import streamlit as st
 from chatbot_rag_chroma.vectordb import create_vector_db
-from chatbot_rag_chroma.ai_model import llm
+from chatbot_RAG_chroma_vector_db.chatbot_rag_chroma.models.ai_model import llm
 #from langchain.prompts import PromptTemplate
 from langchain.schema.output_parser import StrOutputParser
 from langchain.schema.runnable import RunnablePassthrough
-from chatbot_rag_chroma.load import load_pdf
-from chatbot_rag_chroma.preprocess import process_document
+from chatbot_RAG_chroma_vector_db.chatbot_rag_chroma.data_processing.load import load_pdf
+from chatbot_RAG_chroma_vector_db.chatbot_rag_chroma.data_processing.preprocess import process_document
 import os
-from chatbot_rag_chroma.prompt import QUERY_PROMPT
+from chatbot_RAG_chroma_vector_db.chatbot_rag_chroma.prompts.prompt import QUERY_PROMPT
 
 # Initialize the Chroma vector database
 DATA_PATH = os.getenv("DATAPATH")
@@ -23,7 +23,7 @@ def get_chain(QUERY_PROMPT, llm):
         | QUERY_PROMPT
         | llm
         | StrOutputParser()
-    )
+
     return chain
 
 def get_retriever(file_path):

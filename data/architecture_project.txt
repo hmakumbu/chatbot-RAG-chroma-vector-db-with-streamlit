@@ -1,0 +1,26 @@
+1. Modularization and Separation of Concerns
+
+chatbot_RAG_chroma_vector_db/
+├── chatbot_rag_chroma/
+│   ├── data_processing/
+│   │   ├── load.py  # Handles document loading
+│   │   ├── process.py  # Data transformations
+│   ├── vector_db/
+│   │   ├── vectordb.py  # Manages Chroma and vector database
+│   ├── prompts/
+│   │   ├── prompt.py  # Langchain prompt templates
+│   ├── models/
+│   │   ├── ai_model.py  # LLM management
+│   ├── utils/
+│   │   ├── config.py  # Loads environment variables, configurations
+├── app.py  # Main Streamlit app
+├── get_llm_features.py  # Initializes retriever and chains
+└── .env  # Environment file
+
+Steps:
+
+* Create the directories with:
+
+* mkdir -p chatbot_rag_chroma/{data_processing,vector_db,prompts,models,utils}
+
+* Move the files: Place each file in its appropriate directory.
