@@ -40,7 +40,7 @@ Extract detailed information from the following sections of the website:
   - **Students Mentored**: Provide the number of students mentored.
   - **Latest News**: List the latest news articles, including the title, date, time, description, and image metadata (alt text and src).
 
-- **About**:
+- **about-ammi-2**:
   - **Description**: Extract the description of the African Master's in Machine Intelligence (AMMI).
   - **Our Centers**: Mention the details of the centers associated with AMMI.
   - **About AMMI**: Provide detailed information about the AMMI program.
@@ -48,7 +48,7 @@ Extract detailed information from the following sections of the website:
   - **Our Lecturers**: Extract information about the lecturers involved in the program.
   - **Our Students**: Provide details about the student body, including any notable statistics.
 
-- **Admissions**:
+- **admission-2**:
   - **Why AMMI**: Explain why students should consider AMMI.
   - **Admission Requirements**: List the requirements for admission.
   - **Academic History**: Provide details about the academic background expected.
@@ -57,10 +57,10 @@ Extract detailed information from the following sections of the website:
   - **Background Summary**: Provide a summary of the background expected for applicants.
   - **FAQs**: List frequently asked questions, along with their answers.
 
-- **Events**:
+- **events**:
   - **Upcoming Events**: Extract details about upcoming events, including the title, date, time, description, and image metadata (alt text and src).
 
-- **Blog**:
+- **blog-2**:
   - **Blog Posts**: List all blog posts, including the title, author, publication date, content summary, and image metadata (alt text and src).
 
 For each section, include all available metadata, including alt text and src for images, and container information if present.
