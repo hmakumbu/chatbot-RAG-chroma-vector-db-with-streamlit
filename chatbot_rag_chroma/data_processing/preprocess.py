@@ -1,7 +1,7 @@
 import json
 from langchain.schema import Document
 import os
-# from load import load_text
+from load import load_text
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from dotenv import load_dotenv
 from typing import List, Dict, Any
@@ -18,15 +18,16 @@ DATA_PATH = os.getenv("DATAPATH")
 #     return docs
 
 def process_documents(documents):
-    text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n", ". ", " ", ""], chunk_size=300, chunk_overlap=30)
+    text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n", ". ", " ", ""], chunk_size=400, chunk_overlap=0)
     docs = text_splitter.split_documents(documents)
 
     return docs
 
-# data = load_text(DATA_PATH)
-# doc = process_documents(data)
+data = load_text(DATA_PATH)
+doc = process_documents(data)
 
-#print(doc[2])
+for d in doc :
+    print(d)
 
 # for doc in processed_docs:
 #     print(f"Metadata: {doc['metadata']}, Content: {doc['page_content']}")
