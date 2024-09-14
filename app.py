@@ -1,13 +1,18 @@
 import streamlit as st
 from dotenv import load_dotenv
-from get_llm_features import get_retriever, get_chain
-from chatbot_RAG_chroma_vector_db.chatbot_rag_chroma.models.ai_model import llm
-from chatbot_RAG_chroma_vector_db.chatbot_rag_chroma.prompts.prompt import QUERY_PROMPT
+from chatbot_rag_chroma.models.ai_model import llm
+from chatbot_rag_chroma.prompts.prompt import prompt
+
 import os
+from get_llm_features import get_retriever, get_chain
+
+
 
 load_dotenv()
-DATA_PATH = os.getenv("DATAPATH")
-file_path = os.path.join(DATA_PATH, "website_structure.json")
+#DATA_PATH = os.getenv("DATAPATH")
+#file_path = os.path.join(DATA_PATH, "website_structure.json")
+
+DATA_PATH = os.getcwd()+ "/chatbot_rag_chroma/data_processing/website_structure.json"
 
 def handle_question(retriever, chain):
     question_text = st.session_state.new_question_input
@@ -43,5 +48,5 @@ def main():
 
 if __name__ == "__main__":
     retriever = get_retriever()
-    chain = get_chain(QUERY_PROMPT=QUERY_PROMPT, llm=llm)
+    chain = get_chain(prompt=prompt, llm=llm)
     main()
