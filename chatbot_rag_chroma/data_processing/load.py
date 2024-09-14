@@ -1,12 +1,14 @@
 import os
 import json
-from scraping_module import scrape_page_to_json
+# from scraping_module import scrape_page_to_json
 from dotenv import load_dotenv
 from langchain_community.document_loaders import TextLoader
 # from de 
 
 load_dotenv()
 
+# DATA_PATH = os.getcwd()+ "data/ammi_program.txt"
+DATA_PATH = os.getenv("DATAPATH")
 
 def load_text(file_path):
    
@@ -20,6 +22,8 @@ def load_text(file_path):
     #print(type(documents))
     
     return documents
+
+print(load_text(DATA_PATH))
 
 # Scrape URLs and save JSON
 # def load_scraped_data():

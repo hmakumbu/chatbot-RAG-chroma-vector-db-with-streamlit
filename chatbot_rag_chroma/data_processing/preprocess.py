@@ -1,17 +1,66 @@
 import json
 from langchain.schema import Document
 import os
+from load import load_text
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from dotenv import load_dotenv
-from typing import List, Dict
+from typing import List, Dict, Any
 
 # Load environment variables from the .env file
 
 load_dotenv()
-def process_documents(documents: List[str]) -> List[Document]:
-    text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n", ". ", " ", ""], chunk_size=400, chunk_overlap=0)
-    docs = text_splitter.split_documents(documents)
-    return docs
+
+DATA_PATH = os.getenv("DATAPATH")
+
+# def process_documents(documents: List[str]) -> List[Document]:
+#     text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n", ". ", " ", ""], chunk_size=40, chunk_overlap=0)
+#     docs = text_splitter.split_documents(documents)
+#     return docs
+
+def process_documents(documents):
+    """
+    Processes a list of Document objects, splitting them into smaller chunks
+    and creating a dictionary with metadata and content.
+
+    Args:
+        documents (list): A list of Document objects, each with 'page_content'
+                           and 'metadata' attributes.
+
+    Returns:
+        list: A list of dictionaries containing 'content' and 'metadata' for each chunk.
+    """
+    # Create a text splitter instance
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,  # Adjust chunk size as needed
+        chunk_overlap=100  # Adjust overlap as needed
+    )
+    
+    processed_documents = []
+
+    for doc in documents:
+        # Split the document's content into chunks
+        split_texts = text_splitter.split_text(doc.page_content)
+        
+        for chunk in split_texts:
+            # Create a dictionary for each chunk
+            processed_doc = {
+                'content': chunk,
+                'metadata': doc.metadata
+            }
+            processed_documents.append(processed_doc)
+
+    return processed_documents
+
+text = load_text(DATA_PATH)
+# print(text)
+processed_docs = process_documents(text)
+
+print(type(processed_docs))
+
+# for doc in processed_docs:
+#     print(f"Metadata: {doc['metadata']}, Content: {doc['page_content']}")
+
+
 # # # Retrieve the DATA_PATH from environment variables
 # DATA_PATH = os.getenv("DATAPATH")
 
