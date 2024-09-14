@@ -1,7 +1,7 @@
 import json
 from langchain.schema import Document
 import os
-from load import load_text
+# from load import load_text
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from dotenv import load_dotenv
 from typing import List, Dict, Any
@@ -23,8 +23,8 @@ def process_documents(documents):
 
     return docs
 
-data = load_text(DATA_PATH)
-doc = process_documents(data)
+# data = load_text(DATA_PATH)
+# doc = process_documents(data)
 
 #print(doc[2])
 
