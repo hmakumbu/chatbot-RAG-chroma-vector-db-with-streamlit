@@ -18,44 +18,15 @@ DATA_PATH = os.getenv("DATAPATH")
 #     return docs
 
 def process_documents(documents):
-    """
-    Processes a list of Document objects, splitting them into smaller chunks
-    and creating a dictionary with metadata and content.
+    text_splitter = RecursiveCharacterTextSplitter(separators=["\n\n", "\n", ". ", " ", ""], chunk_size=300, chunk_overlap=30)
+    docs = text_splitter.split_documents(documents)
 
-    Args:
-        documents (list): A list of Document objects, each with 'page_content'
-                           and 'metadata' attributes.
+    return docs
 
-    Returns:
-        list: A list of dictionaries containing 'content' and 'metadata' for each chunk.
-    """
-    # Create a text splitter instance
-    text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,  # Adjust chunk size as needed
-        chunk_overlap=100  # Adjust overlap as needed
-    )
-    
-    processed_documents = []
+data = load_text(DATA_PATH)
+doc = process_documents(data)
 
-    for doc in documents:
-        # Split the document's content into chunks
-        split_texts = text_splitter.split_text(doc.page_content)
-        
-        for chunk in split_texts:
-            # Create a dictionary for each chunk
-            processed_doc = {
-                'content': chunk,
-                'metadata': doc.metadata
-            }
-            processed_documents.append(processed_doc)
-
-    return processed_documents
-
-text = load_text(DATA_PATH)
-# print(text)
-processed_docs = process_documents(text)
-
-print(type(processed_docs))
+#print(doc[2])
 
 # for doc in processed_docs:
 #     print(f"Metadata: {doc['metadata']}, Content: {doc['page_content']}")

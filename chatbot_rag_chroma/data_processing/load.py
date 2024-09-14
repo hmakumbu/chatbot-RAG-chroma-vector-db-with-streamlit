@@ -11,17 +11,15 @@ load_dotenv()
 DATA_PATH = os.getenv("DATAPATH")
 
 def load_text(file_path):
-   
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"The file {file_path} does not exist.")
-    
+
     loader = TextLoader(file_path)
     documents = loader.load()
-    
-    #print(documents)
-    #print(type(documents))
-    
+
+
     return documents
+
 
 print(load_text(DATA_PATH))
 
