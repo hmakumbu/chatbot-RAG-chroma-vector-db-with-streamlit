@@ -12,7 +12,7 @@ load_dotenv()
 #DATA_PATH = os.getenv("DATAPATH")
 #file_path = os.path.join(DATA_PATH, "website_structure.json")
 
-DATA_PATH = os.getcwd()+ "/chatbot_rag_chroma/data_processing/website_structure.json"
+DATA_PATH = os.getcwd()+ "data/ammi_program.txt"
 
 def handle_question(retriever, chain):
     question_text = st.session_state.new_question_input
