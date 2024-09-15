@@ -41,8 +41,35 @@ def save_conversation(question, response):
         file.write(f"Bot: {response}\n\n")
 
 def main():
-    st.title("ChatBox App AMMI Programm")
-    st.write("Ask questions about the Platform DataBeez.")
+    st.title("ChatBot App AMMI Programm")
+    with st.sidebar:
+
+        st.sidebar.markdown("**Important Announcement.**")
+        #st.sidebar.write("")
+        st.sidebar.text("""Hello everyone,
+
+
+Dear students of the AMMI program,
+we are excited to present this test version 
+of the AMMI chatbot application. This tool is designed 
+to help you communicate with the program, 
+providing information about its content and related details.
+
+We have launched this test version to gather feedback 
+that will help us improve the application. 
+All questions and responses are recorded and analyzed 
+to identify areas that need adjustment before the release. 
+For now, the project is accessible to a limited group. 
+If the chatbot provides an incorrect response, 
+please kindly provide the correct answer in return. 
+Your contribution is crucial to the success of this project.
+
+The chatbot is built using the RAG system and prompt engineering. 
+Your feedback will help us explore the integration 
+of additional concepts to enhance its performance.
+
+Thank you for your active participation and support!.""")
+      
 
     if "history" not in st.session_state:
         st.session_state.history = []
