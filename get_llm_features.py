@@ -16,13 +16,7 @@ load_dotenv()
 print(f"PYTHONPATH: {os.getenv('PYTHONPATH')}")
 
 
-#DATA_PATH = os.getenv("DATAPATH")
-#file_path = os.path.join(DATA_PATH, "website_structure.json")
-
 file_path = os.getenv("DATAPATH")
-
-#DATA_PATH = os.path.join(os.getcwd(), "chatbot_rag_chroma", "data_processing")
-#file_path = os.path.join(DATA_PATH, "website_structure.json")
 
 def get_chain(prompt, llm):
     chain = (
@@ -34,8 +28,6 @@ def get_chain(prompt, llm):
     return chain
 
 def get_retriever():
-    # with open(file_path, "r") as f:
-    #     data = te.load(f)
     
     text = load_text(file_path)
     documents = process_documents(text)

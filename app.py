@@ -5,7 +5,7 @@ from chatbot_rag_chroma.prompts.prompt import prompt
 
 import os
 from get_llm_features import get_retriever, get_chain
-
+from datetime import datetime
 
 
 load_dotenv()
@@ -29,6 +29,14 @@ def handle_question(retriever, chain):
             st.session_state.new_question_input = ""
             st.experimental_rerun()
 
+def save_conversation(question, response):
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    file_path= os.getcwd()+ "/data/conversation_history.txt"
+    with open(file_path, "a") as file:
+        file.write(f"Date et Heure: {timestamp}\n")
+        file.write(f"User: {question}\n")
+        file.write(f"Bot: {response}\n\n")
+
 def main():
     st.title("ChatBox App AMMI Programm")
     st.write("Ask questions about the Platform DataBeez.")
@@ -43,6 +51,8 @@ def main():
         st.write(f"**Question {i+1}:** {question}")
         st.write(f"**Response:** {response}")
         st.write("---")
+
+        save_conversation(question,response)
 
     st.text_input("Ask your question:", key="new_question_input", on_change=lambda: handle_question(retriever, chain))
 

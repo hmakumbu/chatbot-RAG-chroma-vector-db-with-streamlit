@@ -21,6 +21,7 @@ def load_text(file_path):
     return documents
 
 
+
 # print(load_text(DATA_PATH))
 
 # Scrape URLs and save JSON
