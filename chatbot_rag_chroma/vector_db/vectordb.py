@@ -1,7 +1,8 @@
 import os
 import chromadb
 from dotenv import load_dotenv
-from langchain.embeddings import SentenceTransformerEmbeddings
+# from langchain.embeddings import SentenceTransformerEmbeddings
+from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain.schema import Document
 

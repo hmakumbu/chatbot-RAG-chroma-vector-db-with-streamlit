@@ -2,4 +2,6 @@ langchain
 chromadb
 python-dotenv
 langchain_community
+langchain_groq
 streamlit
+sentence-transformers

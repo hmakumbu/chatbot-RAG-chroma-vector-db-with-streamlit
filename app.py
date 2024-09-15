@@ -27,7 +27,10 @@ def handle_question(retriever, chain):
             response = results if isinstance(results, str) else results[0]
             st.session_state.history.append((question_text, response))
             st.session_state.new_question_input = ""
-            st.experimental_rerun()
+            # st.experimental_rerun()
+
+            if st.button('Rerun'):
+                st.rerun
 
 def save_conversation(question, response):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
