@@ -11,6 +11,6 @@ from langchain_groq import ChatGroq
 
 load_dotenv()
 
-groq_api_ke = os.getenv("API_Key_groq")
+groq_api_key = os.getenv("API_Key_groq")
 
-llm = ChatGroq(temperature=0, groq_api_key=groq_api_ke, model_name="mixtral-8x7b-32768")
+llm = ChatGroq(temperature=0, groq_api_key=groq_api_key, model_name="mixtral-8x7b-32768")
