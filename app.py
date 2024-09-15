@@ -30,7 +30,7 @@ def handle_question(retriever, chain):
             st.experimental_rerun()
 
 def main():
-    st.title("ChatBox App DataBeez")
+    st.title("ChatBox App AMMI Programm")
     st.write("Ask questions about the Platform DataBeez.")
 
     if "history" not in st.session_state:
